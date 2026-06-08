@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "participants",
+    "main_topics",
+    "outcomes",
+    "action_items",
+    "sentiment",
+    "reference_ids",
+    "churn_risk",
+    "churn_risk_rationale",
+    "personalized_next_actions"
+  ],
+  "properties": {
+    "participants": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["agent_name", "customer_name"],
+      "properties": {
+        "agent_name": { "type": "string", "description": "Name of the agent or representative" },
+        "customer_name": { "type": "string", "description": "Name of the customer or caller" }
+      }
+    },
+    "main_topics": {
+      "type": "array",
+      "description": "Main topics or issues discussed in the call",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "outcomes": {
+      "type": "array",
+      "description": "Resolutions or outcomes achieved during the call",
+      "items": { "type": "string" }
+    },
+    "action_items": {
+      "type": "array",
+      "description": "Follow-up actions with responsible party and optional due context",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["who", "action"],
+        "properties": {
+          "who": { "type": "string", "description": "Party responsible: 'customer', 'agent', or 'company'" },
+          "action": { "type": "string", "description": "Description of the action" },
+          "due": { "type": ["string", "null"], "description": "Due date or timeframe if mentioned, else null" }
+        }
+      }
+    },
+    "sentiment": {
+      "type": "string",
+      "enum": ["positive", "neutral", "negative", "mixed"],
+      "description": "Overall sentiment of the call from the customer's perspective"
+    },
+    "reference_ids": {
+      "type": "array",
+      "description": "Policy numbers, claim IDs, or other reference identifiers mentioned",
+      "items": { "type": "string" }
+    },
+
+    "churn_risk": {
+      "type": "string",
+      "enum": ["low", "medium", "high"],
+      "description": "Likelihood this customer churns soon. Weigh tenure, loyalty tier, lifetime value, open-claim friction, and any churn_signals from the CRM record — not just the call's tone."
+    },
+    "churn_risk_rationale": {
+      "type": "string",
+      "description": "One or two sentences justifying churn_risk. MUST cite specific CRM facts (e.g. tenure, tier, open claim status, prior interactions) and/or transcript moments — not generic reasoning."
+    },
+    "personalized_next_actions": {
+      "type": "array",
+      "description": "Concrete, CRM-aware next steps for the agent or company to retain and serve THIS customer. Retention-first when churn signals are present.",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["action", "rationale"],
+        "properties": {
+          "action": { "type": "string", "description": "The recommended next step" },
+          "rationale": { "type": "string", "description": "Why, grounded in a specific CRM fact (tenure, tier, open claim, lapsed discount, payment history, prior interaction)" }
+        }
+      }
+    },
+    "cross_sell_opportunities": {
+      "type": "array",
+      "description": "Products to consider offering LATER. Only products in products_offered_by_carrier that the customer does NOT already hold. Empty if now is a bad time (e.g. an open claim) — say so via personalized_next_actions instead.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["product", "rationale"],
+        "properties": {
+          "product": { "type": "string", "description": "A product the customer does not currently hold" },
+          "rationale": { "type": "string", "description": "Why it fits this customer, referencing CRM context" }
+        }
+      }
+    }
+  }
+}

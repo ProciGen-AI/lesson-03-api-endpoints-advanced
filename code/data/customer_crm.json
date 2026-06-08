@@ -1,0 +1,46 @@
+{
+  "customer_id": "EG-100482",
+  "full_name": "David Miller",
+  "policy_number": "88-Delta-4922",
+  "tenure_years": 6,
+  "loyalty_tier": "Gold",
+  "lifetime_value_usd": 16240,
+  "products_held": ["homeowners"],
+  "products_offered_by_carrier": ["homeowners", "auto", "life", "umbrella"],
+  "payment": {
+    "method": "autopay",
+    "history": "excellent — no missed payments in 6 years",
+    "recent_issue": "December autopay declined (card on file had expired); resolved on the latest call"
+  },
+  "open_claims": [
+    {
+      "claim_id": "CLM-2026-0142",
+      "type": "water damage — basement pipe burst",
+      "status": "internal review (senior examiner)",
+      "estimate_usd": 5200,
+      "opened_days_ago": 10,
+      "adjuster": "Henderson"
+    }
+  ],
+  "coverage_notes": [
+    "Water Back-up & Sump Pump Overflow limit is currently $5,000; customer declined an increase while the claim is open"
+  ],
+  "recent_interactions": [
+    {
+      "date": "2026-02-18",
+      "channel": "email",
+      "summary": "Renewal notice. Protective-device (central alarm) discount lapsed — no updated certificate on file for 3 years."
+    },
+    {
+      "date": "2025-11-30",
+      "channel": "system",
+      "summary": "Autopay card-decline notice generated; customer did not update payment method."
+    }
+  ],
+  "churn_signals": [
+    "Opened the latest call saying he 'was ready to cancel the whole thing'",
+    "Repeated frustration about the stalled water-damage claim"
+  ],
+  "preferred_contact": "email",
+  "account_note": "Long-tenured, high-value, retention-sensitive right now. Handle retention-first; do not hard-sell while the water-damage claim is open."
+}

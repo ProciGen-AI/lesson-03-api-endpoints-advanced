@@ -1,0 +1,19 @@
+# Standalone dependency list for Lesson 3 — everything this lab needs.
+# setup.sh installs these for you; to do it by hand, run from this folder:
+#   pip install -r requirements.txt
+
+# AWS SDK — used by every Bedrock exercise (02–08).
+boto3
+
+# Loads variables from the repo-root .env into os.environ.
+python-dotenv
+
+# Retry helpers — used by exercise 07 (validate + retry).
+tenacity
+
+# JSON Schema validation — used by exercises 07 and 08.
+jsonschema
+
+# HTTP client — used by exercise 01 (raw HTTP call against Gemini, to show
+# "an LLM API endpoint is just an HTTP POST" without SigV4 signing).
+requests
