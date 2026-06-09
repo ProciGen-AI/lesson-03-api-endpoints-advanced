@@ -64,4 +64,4 @@ Start here: **[`SDD/README.md`](SDD/README.md)**.
 
 ## Homework
 
-[`homework/README.md`](homework/README.md) has extension exercises that push the schema, validation, and context-assembly ideas further. Each builds on a specific exercise from this lab.
+[`homework/README.md`](homework/README.md) is a single capstone — an **AI-subscription advisor** you build from a blank file — that takes the whole lesson (tool-forcing, schema design, validate + retry) to a brand-new domain, plus an optional stretch. The transfer test: design your own schema and rebuild the engine of `03` for it, then have a coding agent stress-test it and compare it against the reference.
