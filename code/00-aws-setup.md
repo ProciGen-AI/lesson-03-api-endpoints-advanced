@@ -1,8 +1,8 @@
 # Exercise 00 — Set up AWS Bedrock
 
-This is a one-time setup that prepares your AWS account to run every Bedrock-based exercise in this course (02–08). There is no Python code here — it's a walkthrough of the AWS console plus a smoke test at the end.
+This is a one-time setup that prepares your AWS account to run every Bedrock-based exercise in this course. There is no Python code here — it's a walkthrough of the AWS console plus a smoke test at the end.
 
-Exercise 01 (Gemini via raw HTTP) does **not** require AWS — you can do that one with just a Google AI Studio key (Step 5). Everything from 02 onward needs the AWS setup below.
+Every exercise in this lesson (01–04) runs on Bedrock, so they all need the AWS setup below. If you already completed this in Lesson 2 and your `.env` still works, skip straight to the smoke test in Step 4d.
 
 If you hit a snag, see [**Getting help when setup fails**](#getting-help-when-setup-fails) at the bottom — it shows the *format* in which to share an error or screenshot with Claude so you get a useful answer fast.
 
@@ -12,7 +12,6 @@ If you hit a snag, see [**Getting help when setup fails**](#getting-help-when-se
 2. Create an IAM user with Bedrock permissions.
 3. Generate access keys for that user.
 4. Run `setup.sh` to seed `.env`, fill in your keys (and confirm the model ID in the Bedrock console), then re-run `setup.sh` to verify Bedrock works end-to-end.
-5. Grab a free Google AI Studio API key — exercise 01 uses Gemini for one "an LLM API is just HTTP" example.
 
 > ⚠️ **Use a personal sandbox AWS account, or an explicit "course" account.** Don't run lab exercises against a production AWS account. The total cost of running every exercise in this course is roughly **a few cents to under a dollar** — but you're responsible for any charges.
 
@@ -99,7 +98,7 @@ This time it runs the full check. On success the last lines are:
 
 ```
 ✓ Bedrock OK — model replied: 'ok'
-✓ Lesson-02-API-Endpoints is ready. Run an exercise with:  python <exercise>.py
+✓ lesson-03-api-endpoints-advanced is ready. Run an exercise with:  python <exercise>.py
 ```
 
 ### If you see an error
@@ -112,23 +111,6 @@ The setup script prints a concrete action for every failure mode. The most commo
 - **`EndpointConnectionError`** — `AWS_REGION` isn't a Bedrock-supported region. Try `us-east-1` or `us-west-2`.
 
 If the error you're seeing isn't in that list — or the suggested action doesn't fix it — see [Getting help when setup fails](#getting-help-when-setup-fails) below.
-
-## Step 5 — Get a Google AI Studio API key
-
-Exercise 01 hits Gemini directly via raw HTTP — the point is to show "an LLM API endpoint is just an HTTP POST" without the SigV4 signing that Bedrock requires. That call uses an API key rather than IAM credentials, and Google AI Studio gives one out free.
-
-1. Open https://aistudio.google.com/apikey and sign in with a Google account.
-2. Click **Get API key**. If prompted, accept the terms and choose a project (any will do).
-3. Copy the key shown (starts with `AIza...`).
-4. Open the `.env` file (same one as Step 4b) and paste the key:
-
-```env
-GOOGLE_API_KEY=AIza...
-```
-
-`GEMINI_MODEL_ID` is already set to a reasonable default. The free tier rate limits are generous enough for the lab; no billing setup needed.
-
-You don't need to verify this end-to-end now — exercise 01 will tell you if the key is wrong. Once both `AWS_*` and `GOOGLE_API_KEY` are filled in, you're ready for the exercises.
 
 ---
 

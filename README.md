@@ -8,13 +8,11 @@ Everything lives under [`code/`](code/): a setup walkthrough (`00-aws-setup.md`)
 
 ## The exercises
 
-| # | File | What it adds vs. the previous one |
-|---|---|---|
-| 00 | [`00-aws-setup.md`](code/00-aws-setup.md) | One-time AWS/Bedrock setup (same as Lesson 2 — skip if your `.env` already works). No Python. |
-| 01 | `01-structured-output.py` | Force the model to emit JSON matching a schema via **tool-forcing**. Tiny inline schema (4 flat fields) so the mechanic is the whole lesson. |
-| 02 | `02-rich-schema.py` | Same mechanic as 01, but the schema graduates to a production shape: nested objects, arrays of objects, enums, nullable fields, `minItems`. Teaches schema design. |
-| 03 | `03-validate-and-retry.py` | Productionize 02: validate the model's output with `jsonschema`, and wrap the call with `tenacity` to retry on transient AWS errors or validation failures (with a discriminating predicate). |
-| 04 | `04-context-enrichment.py` | Enrich the prompt with **CRM context**. A static system prompt (cache-friendly) plus a dynamic, per-customer user prompt built in `enrichment_prompts_04.py`, producing an extended schema whose new fields (churn risk, next actions, cross-sell) only fill well *because* of the context. |
+- **00 — [`00-aws-setup.md`](code/00-aws-setup.md)** — One-time AWS/Bedrock setup (same as Lesson 2 — skip if your `.env` already works). No Python.
+- **01 — `01-structured-output.py`** — Force the model to emit JSON matching a schema via **tool-forcing**. Tiny inline schema (4 flat fields) so the mechanic is the whole lesson.
+- **02 — `02-rich-schema.py`** — Same mechanic as 01, but the schema graduates to a production shape: nested objects, arrays of objects, enums, nullable fields, `minItems`. Teaches schema design.
+- **03 — `03-validate-and-retry.py`** — Productionize 02: validate the model's output with `jsonschema`, and wrap the call with `tenacity` to retry on transient AWS errors or validation failures (with a discriminating predicate).
+- **04 — `04-context-enrichment.py`** — Enrich the prompt with **CRM context**. A static system prompt (cache-friendly) plus a dynamic, per-customer user prompt built in `enrichment_prompts_04.py`, producing an extended schema whose new fields (churn risk, next actions, cross-sell) only fill well *because* of the context.
 
 The arc: 01 establishes the tool-forcing mechanic → 02 grows the schema into a production contract → 03 hardens it (validate + retry) → 04 shifts the focus from *the schema* to *what you feed the model* — context engineering.
 

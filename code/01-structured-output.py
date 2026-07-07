@@ -89,9 +89,10 @@ def summarize_structured(transcript: str, model_id: str, region: str) -> dict:
     # Lab teaching aid: dump the whole Converse response so you can see the
     # envelope your structured data is wrapped in. The part that matters is
     # output.message.content — with tool-forcing the payload is a `toolUse`
-    # block whose `input` holds your JSON, NOT a `text` block like 02–04
-    # returned. You also see stopReason="tool_use", token usage, and request
-    # metadata. Production code drops this and goes straight to the extraction.
+    # block whose `input` holds your JSON, NOT the plain `text` block an
+    # un-forced Converse call returns. You also see stopReason="tool_use",
+    # token usage, and request metadata. Production code drops this and goes
+    # straight to the extraction.
     print("=== RAW CONVERSE RESPONSE ===")
     print(json.dumps(response, indent=2, default=str))
 

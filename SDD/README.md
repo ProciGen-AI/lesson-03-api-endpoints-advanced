@@ -17,6 +17,7 @@ the lesson repo) holds the **task** (`PROMPT.md`) and the **validator**
 ```bash
 git clone https://github.com/ProciGen-AI/lesson-03-api-endpoints-advanced-sdd.git
 cd lesson-03-api-endpoints-advanced-sdd
+# copy or create a working .env in this folder (your AWS creds + BEDROCK_MODEL_ID) before the next line
 source setup.sh                  # venv + base deps (boto3, python-dotenv) + Bedrock smoke test
 mv CLAUDE.md-example CLAUDE.md   # activate the build conventions your agent reads
 ```
